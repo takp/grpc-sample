@@ -29,8 +29,17 @@ def run():
         stub = helloworld_pb2_grpc.GreeterStub(channel)
         response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
         print("Greeter client received: " + response.message)
+
         response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
         print("Greeter client received: " + response.message)
+
+        hello_request = helloworld_pb2.HelloRequest(name='AAA')
+        response = stub.DisplayError(hello_request)
+        packed_detail = response.details[0]
+        detail = helloworld_pb2.Detail1()
+        packed_detail.Unpack(detail)
+        print("Greeter client received: ErrorStatus Message: {}, Errno: {}, reason: {}"
+              .format(response.message, detail.errno, detail.reason))
 
 
 if __name__ == '__main__':

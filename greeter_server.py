@@ -32,6 +32,13 @@ class Greeter(helloworld_pb2_grpc.GreeterServicer):
     def SayHelloAgain(self, request, context):
         return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
 
+    def DisplayError(self, request, context):
+        detail = helloworld_pb2.Detail1(errno=400, reason="Invalid ID.")
+        error_status = helloworld_pb2.ErrorStatus()
+        error_status.message="error_status_message"
+        error_status.details.add().Pack(detail)
+        return error_status
+
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     helloworld_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)

@@ -13,6 +13,7 @@
 // limitations under the License.
 
 syntax = "proto3";
+import "google/protobuf/any.proto";
 
 option java_multiple_files = true;
 option java_package = "io.grpc.examples.helloworld";
@@ -27,6 +28,8 @@ service Greeter {
     rpc SayHello (HelloRequest) returns (HelloReply) {}
     // Sends another greeting
     rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+    // Sends another greeting
+    rpc DisplayError (HelloRequest) returns (ErrorStatus) {}
 }
 
 // The request message containing the user's name.
@@ -37,4 +40,18 @@ message HelloRequest {
 // The response message containing the greetings
 message HelloReply {
     string message = 1;
+}
+
+message ErrorStatus {
+    string message = 1;
+    repeated google.protobuf.Any details = 2;
+}
+
+message Detail1 {
+    int32 errno = 1;
+    string reason =2;
+}
+
+message Detail2 {
+    float timestamp = 1;
 }

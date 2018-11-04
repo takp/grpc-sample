@@ -12,6 +12,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import any_pb2 as google_dot_protobuf_dot_any__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -19,8 +20,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='helloworld',
   syntax='proto3',
   serialized_options=_b('\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW'),
-  serialized_pb=_b('\n\x10helloworld.proto\x12\nhelloworld\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\x8e\x01\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x43\n\rSayHelloAgain\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
-)
+  serialized_pb=_b('\n\x10helloworld.proto\x12\nhelloworld\x1a\x19google/protobuf/any.proto\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"E\n\x0b\x45rrorStatus\x12\x0f\n\x07message\x18\x01 \x01(\t\x12%\n\x07\x64\x65tails\x18\x02 \x03(\x0b\x32\x14.google.protobuf.Any\"(\n\x07\x44\x65tail1\x12\r\n\x05\x65rrno\x18\x01 \x01(\x05\x12\x0e\n\x06reason\x18\x02 \x01(\t\"\x1c\n\x07\x44\x65tail2\x12\x11\n\ttimestamp\x18\x01 \x01(\x02\x32\xd3\x01\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x43\n\rSayHelloAgain\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x43\n\x0c\x44isplayError\x12\x18.helloworld.HelloRequest\x1a\x17.helloworld.ErrorStatus\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3')
+  ,
+  dependencies=[google_dot_protobuf_dot_any__pb2.DESCRIPTOR,])
 
 
 
@@ -51,8 +53,8 @@ _HELLOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32,
-  serialized_end=60,
+  serialized_start=59,
+  serialized_end=87,
 )
 
 
@@ -82,12 +84,123 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=62,
-  serialized_end=91,
+  serialized_start=89,
+  serialized_end=118,
 )
 
+
+_ERRORSTATUS = _descriptor.Descriptor(
+  name='ErrorStatus',
+  full_name='helloworld.ErrorStatus',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='helloworld.ErrorStatus.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='details', full_name='helloworld.ErrorStatus.details', index=1,
+      number=2, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=120,
+  serialized_end=189,
+)
+
+
+_DETAIL1 = _descriptor.Descriptor(
+  name='Detail1',
+  full_name='helloworld.Detail1',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='errno', full_name='helloworld.Detail1.errno', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='reason', full_name='helloworld.Detail1.reason', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=191,
+  serialized_end=231,
+)
+
+
+_DETAIL2 = _descriptor.Descriptor(
+  name='Detail2',
+  full_name='helloworld.Detail2',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='timestamp', full_name='helloworld.Detail2.timestamp', index=0,
+      number=1, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=233,
+  serialized_end=261,
+)
+
+_ERRORSTATUS.fields_by_name['details'].message_type = google_dot_protobuf_dot_any__pb2._ANY
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['ErrorStatus'] = _ERRORSTATUS
+DESCRIPTOR.message_types_by_name['Detail1'] = _DETAIL1
+DESCRIPTOR.message_types_by_name['Detail2'] = _DETAIL2
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), dict(
@@ -104,6 +217,27 @@ HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Me
   ))
 _sym_db.RegisterMessage(HelloReply)
 
+ErrorStatus = _reflection.GeneratedProtocolMessageType('ErrorStatus', (_message.Message,), dict(
+  DESCRIPTOR = _ERRORSTATUS,
+  __module__ = 'helloworld_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.ErrorStatus)
+  ))
+_sym_db.RegisterMessage(ErrorStatus)
+
+Detail1 = _reflection.GeneratedProtocolMessageType('Detail1', (_message.Message,), dict(
+  DESCRIPTOR = _DETAIL1,
+  __module__ = 'helloworld_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.Detail1)
+  ))
+_sym_db.RegisterMessage(Detail1)
+
+Detail2 = _reflection.GeneratedProtocolMessageType('Detail2', (_message.Message,), dict(
+  DESCRIPTOR = _DETAIL2,
+  __module__ = 'helloworld_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.Detail2)
+  ))
+_sym_db.RegisterMessage(Detail2)
+
 
 DESCRIPTOR._options = None
 
@@ -113,8 +247,8 @@ _GREETER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=94,
-  serialized_end=236,
+  serialized_start=264,
+  serialized_end=475,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
@@ -132,6 +266,15 @@ _GREETER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_HELLOREQUEST,
     output_type=_HELLOREPLY,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DisplayError',
+    full_name='helloworld.Greeter.DisplayError',
+    index=2,
+    containing_service=None,
+    input_type=_HELLOREQUEST,
+    output_type=_ERRORSTATUS,
     serialized_options=None,
   ),
 ])

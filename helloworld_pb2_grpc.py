@@ -24,6 +24,11 @@ class GreeterStub(object):
         request_serializer=helloworld__pb2.HelloRequest.SerializeToString,
         response_deserializer=helloworld__pb2.HelloReply.FromString,
         )
+    self.DisplayError = channel.unary_unary(
+        '/helloworld.Greeter/DisplayError',
+        request_serializer=helloworld__pb2.HelloRequest.SerializeToString,
+        response_deserializer=helloworld__pb2.ErrorStatus.FromString,
+        )
 
 
 class GreeterServicer(object):
@@ -44,6 +49,13 @@ class GreeterServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def DisplayError(self, request, context):
+    """Sends another greeting
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -56,6 +68,11 @@ def add_GreeterServicer_to_server(servicer, server):
           servicer.SayHelloAgain,
           request_deserializer=helloworld__pb2.HelloRequest.FromString,
           response_serializer=helloworld__pb2.HelloReply.SerializeToString,
+      ),
+      'DisplayError': grpc.unary_unary_rpc_method_handler(
+          servicer.DisplayError,
+          request_deserializer=helloworld__pb2.HelloRequest.FromString,
+          response_serializer=helloworld__pb2.ErrorStatus.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
